@@ -2,7 +2,6 @@
 service: aws-serverless-nodejs-datadog-otel
 
 plugins:
-  - serverless-pseudo-parameters
   - serverless-plugin-datadog
 
 frameworkVersion: '2'
@@ -24,6 +23,7 @@ provider:
 
 custom:
   accountNumber: '${ssm:/service/demo-lambda-datadog/aws/accountId}'
+
   datadog:
     flushMetricsToLogs: true
     apiKey: ${ssm:/service/demo-lambda-datadog/datadog/apikey}

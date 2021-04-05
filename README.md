@@ -1,7 +1,7 @@
 # aws-serverless-nodejs-datadog-otel
 Creating a serverless application using datadog and open telemetry
 
-Setup the Cloudformation stack to generate the [Datadog Forwarder](https://docs.datadoghq.com/serverless/forwarder/), and install the [Datadog plugin](https://docs.datadoghq.com/serverless/serverless_integrations/plugin/).
+Setup the Cloudformation stack to generate the [Datadog Forwarder](https://docs.datadoghq.com/serverless/forwarder/), and install the [Datadog plugin](https://docs.datadoghq.com/serverless/serverless_integrations/plugin/).  To instrument the application, leverage DataDog [telemetry](https://docs.datadoghq.com/serverless/installation/nodejs/?tab=serverlessframework).
 
 Setup the api key using the system manager:
 
@@ -21,7 +21,7 @@ aws ssm put-parameter \
 ```
 
 Deploy the application
-``
+```
 sls deploy
 ```
 
