@@ -1,6 +1,9 @@
 
 service: aws-serverless-nodejs-datadog-otel
 
+plugins:
+  - serverless-pseudo-parameters
+
 frameworkVersion: '2'
 
 provider:
@@ -26,7 +29,7 @@ custom:
     logLevel: "info"
     enableXrayTracing: true
     enableDDTracing: true
-    forwarderArn: arn:aws:lambda:us-east-1:000000000000:function:datadog-forwarder
+    forwarderArn: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:datadog-forwarder-Forwarder-9HL2PKKMPC7F
     enableTags: true
     injectLogContext: true
     exclude: 
