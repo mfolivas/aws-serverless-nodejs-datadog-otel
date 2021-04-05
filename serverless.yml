@@ -23,6 +23,7 @@ provider:
 
 
 custom:
+  accountNumber: '${ssm:/service/demo-lambda-datadog/aws/accountId}'
   datadog:
     flushMetricsToLogs: true
     apiKey: ${ssm:/service/demo-lambda-datadog/datadog/apikey}
@@ -30,7 +31,7 @@ custom:
     logLevel: "info"
     enableXrayTracing: true
     enableDDTracing: true
-    forwarderArn: arn:aws:lambda:us-east-1:864945005820:function:datadog-forwarder-Forwarder-9HL2PKKMPC7F
+    forwarderArn: arn:aws:lambda:us-east-1:${self:custom.accountNumber}:function:datadog-forwarder-Forwarder-9HL2PKKMPC7F
     enableTags: true
     injectLogContext: true
     exclude: 

@@ -1,7 +1,7 @@
 'use strict';
 
-const awsXRay = require('aws-xray-sdk');npm 
-awsXRay.captureAWS(require('aws-sdk'));
+const awsXRay = require('aws-xray-sdk') 
+awsXRay.captureAWS(require('aws-sdk'))
 
 module.exports.hello = async (event) => {
   const randomNumber = generateANumberFromOneToFifty()

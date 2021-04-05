@@ -1,0 +1,25 @@
+{
+  "name": "aws-serverless-nodejs-datadog-otel",
+  "version": "1.0.0",
+  "description": "Creating a serverless application using datadog and open telemetry",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfolivas/aws-serverless-nodejs-datadog-otel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfolivas/aws-serverless-nodejs-datadog-otel/issues"
+  },
+  "homepage": "https://github.com/mfolivas/aws-serverless-nodejs-datadog-otel#readme",
+  "dependencies": {
+    "aws-xray-sdk": "^3.2.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.880.0"
+  }
+}

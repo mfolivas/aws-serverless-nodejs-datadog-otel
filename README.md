@@ -11,6 +11,13 @@ aws ssm put-parameter \
     --description "Datadog application for DataDog" \
     --type "String" \
     --value "DATADOG-API-KEY"
+
+aws ssm put-parameter \
+    --name "/service/demo-lambda-datadog/aws/accountId" \
+    --description "AWS account id" \
+    --type "String" \
+    --value "AWS-ACCOUNT-ID"
+
 ```
 
 Deploy the application
