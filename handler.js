@@ -6,7 +6,9 @@ module.exports.hello = async (event) => {
     console.error('The number is greater than forty', randomNumber)
     throw new Error('There was error with the lambda')
   }
+  await someLongCalculation()
   console.log('Random error is less than 40', randomNumber)
+
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -28,4 +30,9 @@ const generateNumber = (min, max) => {
 
 const generateANumberFromOneToFifty = () => {
   return generateNumber(1, 50)
+}
+
+const someLongCalculation = () => {
+  const milliseconds = generateNumber(1, 4000)
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
