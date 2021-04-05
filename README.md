@@ -12,3 +12,12 @@ aws ssm put-parameter \
     --type "String" \
     --value "DATADOG-API-KEY"
 ```
+
+Deploy the application
+``
+sls deploy
+```
+
+Once it is deployed, you can `sls invoke -f hello` to call the lambda function manually.  The application is setup to fail at random times.
+
+To test, you can execute the `call-hello.sh` to call the application multiple times.
