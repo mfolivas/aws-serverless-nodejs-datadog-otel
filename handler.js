@@ -5,12 +5,12 @@ awsXRay.captureAWS(require('aws-sdk'))
 
 module.exports.hello = async (event) => {
   console.log('Started the invocation of hello')
+  await sleep()
   const responseNumber = generateANumberFromOneToFifty()
   if (responseNumber > 40) {
     console.error('The response number is greater than forty', responseNumber)
     throw new Error('The response number is not valid', responseNumber)
   }
-  await sleep()
   console.log('Valid response number', responseNumber)
 
   return {
