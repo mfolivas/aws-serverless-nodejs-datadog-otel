@@ -1,5 +1,5 @@
 # aws-serverless-nodejs-datadog-otel
-Creating a serverless application using datadog and open telemetr
+Creating a serverless application using datadog and open telemetry
 
 
 ```
