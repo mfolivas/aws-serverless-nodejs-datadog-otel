@@ -4,13 +4,14 @@ const awsXRay = require('aws-xray-sdk')
 awsXRay.captureAWS(require('aws-sdk'))
 
 module.exports.hello = async (event) => {
-  const randomNumber = generateANumberFromOneToFifty()
-  if (randomNumber > 40) {
-    console.error('The number is greater than forty', randomNumber)
-    throw new Error('There was error with the lambda')
+  console.log('Started the invocation of hello')
+  const responseNumber = generateANumberFromOneToFifty()
+  if (responseNumber > 40) {
+    console.error('The response number is greater than forty', responseNumber)
+    throw new Error('The response number is not valid', responseNumber)
   }
-  await someLongCalculation()
-  console.log('Random error is less than 40', randomNumber)
+  await sleep()
+  console.log('Valid response number', responseNumber)
 
   return {
     statusCode: 200,
@@ -35,7 +36,7 @@ const generateANumberFromOneToFifty = () => {
   return generateNumber(1, 50)
 }
 
-const someLongCalculation = () => {
-  const milliseconds = generateNumber(1, 4000)
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
+const sleep = (ms = generateNumber(1, 4000)) => {
+  console.log('Sleeping for a total of', ms, 'milliseconds')
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
