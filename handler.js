@@ -13,14 +13,13 @@ module.exports.hello = async (event) => {
   
   if (responseNumber > 40) {
     console.error('The response number is greater than forty', responseNumber)
-    sendDistributionMetric('response.amount', responseNumber, 'wasSuccessful:false', `stage:${process.env.stage}`)
-    sendDistributionMetric('response.latency', new Date() - startedTime, 'wasSuccessful:false', `stage:${process.env.stage}`)
+    sendMetrics(responseNumber, startedTime)
     throw new Error('The response number is not valid', responseNumber)
   }
   sendDistributionMetric('response.amount', responseNumber, 'wasSuccessful:true', `stage:${process.env.stage}`)
   console.log('Valid response number', responseNumber)
-  sendDistributionMetric('response.amount', responseNumber)
-  sendDistributionMetric('response.latency', new Date() - startedTime, 'wasSuccessful:true', `stage:${process.env.stage}`)
+  sendMetrics(responseNumber, startedTime)
+  
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -32,6 +31,11 @@ module.exports.hello = async (event) => {
       2
     ),
   }
+}
+
+const sendMetrics = (value, startedTime, wasSuccessful = true) => {
+  sendDistributionMetric('response.amount', value, `wasSuccessful:${wasSuccessful}`, `stage:${process.env.stage}`)
+  sendDistributionMetric('response.latency', value, new Date() - startedTime, `wasSuccessful:${wasSuccessful}`, `stage:${process.env.stage}`)
 }
 
 const generateNumber = (min, max) => {
