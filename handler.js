@@ -3,9 +3,9 @@
 const awsXRay = require('aws-xray-sdk') 
 awsXRay.captureAWS(require('aws-sdk'))
 
-const { sendDistributionMetric } = require("datadog-lambda-js")
+const { sendDistributionMetric, datadog } = require("datadog-lambda-js")
 
-module.exports.hello = async (event) => {
+const hello = async (event) => {
   const startedTime = new Date()
   console.log('Started the invocation of hello')
   await sleep()
@@ -52,3 +52,6 @@ const sleep = (ms = generateNumber(1, 4000)) => {
   console.log('Sleeping for a total of', ms, 'milliseconds')
   return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+
+module.exports.hello = datadog(hello)
