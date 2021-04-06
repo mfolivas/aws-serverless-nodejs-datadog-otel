@@ -19,7 +19,7 @@ module.exports.hello = async (event) => {
   sendDistributionMetric('response.amount', responseNumber, 'wasSuccessful:true', `stage:${process.env.stage}`)
   console.log('Valid response number', responseNumber)
   sendMetrics(responseNumber, startedTime)
-  
+
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -35,7 +35,7 @@ module.exports.hello = async (event) => {
 
 const sendMetrics = (value, startedTime, wasSuccessful = true) => {
   sendDistributionMetric('response.amount', value, `wasSuccessful:${wasSuccessful}`, `stage:${process.env.stage}`)
-  sendDistributionMetric('response.latency', value, new Date() - startedTime, `wasSuccessful:${wasSuccessful}`, `stage:${process.env.stage}`)
+  sendDistributionMetric('response.latency', new Date() - startedTime, `wasSuccessful:${wasSuccessful}`, `stage:${process.env.stage}`)
 }
 
 const generateNumber = (min, max) => {
