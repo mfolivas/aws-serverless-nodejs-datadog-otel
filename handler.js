@@ -16,7 +16,7 @@ const hello = async (event) => {
     sendMetrics(responseNumber, startedTime)
     throw new Error('The response number is not valid', responseNumber)
   }
-  sendDistributionMetric('response.amount', responseNumber, 'wasSuccessful:true', `stage:${process.env.stage}`)
+  
   console.log('Valid response number', responseNumber)
   sendMetrics(responseNumber, startedTime)
 
